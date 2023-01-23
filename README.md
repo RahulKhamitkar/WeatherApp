@@ -4,4 +4,5 @@ Used ShareViewModel
 Recyclerview
 Databinding
 CardViews
-RxJava for Network call. 
+RxJava
+Retrofit for Network call. 
