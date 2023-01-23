@@ -3,21 +3,33 @@ package com.rahul.weatherapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.rahul.weatherapp.feature.current_day.viewmodel.CurrentViewModel
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import com.rahul.weatherapp.databinding.ActivityMainBinding
+import com.rahul.weatherapp.feature.current_day.viewmodel.SharedViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: CurrentViewModel
+    lateinit var viewModel: SharedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this)[CurrentViewModel::class.java]
-        viewModel.getWeatherResult()
-        observeListResponse()
+        val navController: NavController =
+            Navigation.findNavController(this, R.id.activity_main_nav_host_fragment)
+
+        val bottomNavigationView = binding.bottomNav
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
+
+        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+//        viewModel.getWeatherResult()
+//        observeListResponse()
 
     }
 
@@ -26,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
             Log.i("Weather Response","Weather Response = $it")
 
-//            if (!it.isNullOrEmpty()) {
+//            if (!it.isNu) {
 //                Log.i("Weather Response","Weather Response = $it")
 //
 //            }
