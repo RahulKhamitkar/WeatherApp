@@ -17,12 +17,12 @@ import com.rahul.weatherapp.feature.current_day.viewmodel.SharedViewModel
 class TodayFragment : Fragment() {
 
     lateinit var viewModel: SharedViewModel
-    lateinit var _binding: FragmentTodayBinding
+    private lateinit var _binding: FragmentTodayBinding
     private val binding get() = _binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
         NetworkConnection.isNetworkAvailable(requireActivity().application)
         viewModel.getWeatherResult()
     }
@@ -63,8 +63,7 @@ class TodayFragment : Fragment() {
             }
 
             //This is to display Respective weather Image
-            val weather = it.list[0].weather[0].main.toString()
-            when (weather) {
+            when (it.list[0].weather[0].main.toString()) {
                 "Rain" -> {
                     setImage(R.drawable.ic_rain, "Rainy")
                 }

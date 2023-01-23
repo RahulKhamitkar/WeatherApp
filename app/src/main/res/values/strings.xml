@@ -3,4 +3,9 @@
     <string name="today">Today</string>
     <string name="next_5_days">Next 5 Days</string>
     <string name="something_went_wrong">Something Went Wrong please try again later</string>
+    <string name="date">Date</string>
+    <string name="min_temp">Min Temp</string>
+    <string name="max_temp">Max Temp</string>
+    <string name="temp">Temp</string>
+    <string name="every_3_hours_report">Every 3 hours Report</string>
 </resources>
