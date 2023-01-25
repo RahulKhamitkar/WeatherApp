@@ -14,8 +14,6 @@ import com.rahul.weatherapp.feature.current_day.viewmodel.SharedViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: SharedViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding =
@@ -27,32 +25,5 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = binding.bottomNav
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
-        viewModel = ViewModelProvider(this)[SharedViewModel::class.java]
-//        viewModel.getWeatherResult()
-//        observeListResponse()
-
-    }
-
-    private fun observeListResponse() {
-        viewModel.response.observe(this, Observer {
-
-            Log.i("Weather Response","Weather Response = $it")
-
-//            if (!it.isNu) {
-//                Log.i("Weather Response","Weather Response = $it")
-//
-//            }
-        })
-
-        viewModel.loading.observe(this, Observer { isLoading ->
-            isLoading?.let {
-            }
-
-        })
-        viewModel.loadingError.observe(this, Observer { isError ->
-            isError?.let {
-            }
-
-        })
     }
 }

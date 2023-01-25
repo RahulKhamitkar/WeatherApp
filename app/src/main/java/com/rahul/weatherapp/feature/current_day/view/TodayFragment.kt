@@ -45,7 +45,6 @@ class TodayFragment : Fragment() {
     private fun observeListResponse() {
         viewModel.response.observe(viewLifecycleOwner, Observer {
 
-//            Log.i("Weather Response", "Weather Response = $it")
             binding.tvCity.text = it?.city?.name.toString()
 
             //This is to display Temperature in Celsius

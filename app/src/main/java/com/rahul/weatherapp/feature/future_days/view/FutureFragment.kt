@@ -14,7 +14,6 @@ import com.rahul.weatherapp.databinding.FragmentFutureBinding
 import com.rahul.weatherapp.feature.current_day.adapter.FutureWeatherAdapter
 import com.rahul.weatherapp.feature.current_day.viewmodel.SharedViewModel
 
-
 class FutureFragment : Fragment() {
 
     private lateinit var futureWeatherAdapter: FutureWeatherAdapter
@@ -43,7 +42,6 @@ class FutureFragment : Fragment() {
 
         futureWeatherAdapter = FutureWeatherAdapter(arrayListOf())
 
-
         binding.rvFutureWeather.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = futureWeatherAdapter
@@ -53,12 +51,8 @@ class FutureFragment : Fragment() {
 
     private fun observeFutureList() {
         viewModel.response.observe(viewLifecycleOwner, Observer {
-
             futureWeatherAdapter.updateWeatherList(it.list)
-            Log.i("Recycler", "RecyclerView Response $it")
-
         })
-
 
         viewModel.loading.observe(viewLifecycleOwner, Observer { isLoading ->
             isLoading?.let {
